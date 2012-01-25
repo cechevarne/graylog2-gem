@@ -125,8 +125,8 @@ module Graylog2
 
         # Timeframe
         if !filters[:date_from].blank? && !filters[:date_to].blank?
-          range_from = Time.parse(filters[:from]).to_i
-          range_to = Time.parse(filters[:to]).to_i
+          range_from = Time.parse(filters[:date_from]).to_i
+          range_to = Time.parse(filters[:date_to]).to_i
           
           filter 'range', { :created_at => { :gt => range_from, :lt => range_to  } }
         
