@@ -123,7 +123,15 @@ module Graylog2
           filter 'range', { :level => { :to => filters[:severity].to_i } }
         end
 
-        # Timeframe.
+        # Timeframe
+        if !filters[:from].blank? && !filters[:to].blank?
+          range_from = Time.parse(filters[:from]).to_i
+          range_to = Time.parse(filters[:to]).to_i
+          
+          filter 'range', { :created_at => { :gt => range_from, :lt => range_to  } }
+        
+        end
+        
         if !filters[:date].blank?
           range = Quickfilter.get_conditions_timeframe(filters[:date])
           filter 'range', { :created_at => { :gt => range[:greater], :lt => range[:lower],  } }
