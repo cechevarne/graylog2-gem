@@ -124,7 +124,7 @@ module Graylog2
         end
 
         # Timeframe
-        if !filters[:from].blank? && !filters[:to].blank?
+        if !filters[:date_from].blank? && !filters[:date_to].blank?
           range_from = Time.parse(filters[:from]).to_i
           range_to = Time.parse(filters[:to]).to_i
           
