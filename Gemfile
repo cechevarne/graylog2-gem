@@ -1,3 +1,4 @@
 gem "mongoid"
-gem "tire"
+gem "tire", "~> 0.3.12"
+
 
